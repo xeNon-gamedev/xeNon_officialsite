@@ -1,0 +1,24 @@
+@media screen and (max-width: 1300px){
+    .sec_title .title_b{
+        font-size: clamp(2.8rem, calc(2.3rem + 0.625vw), 3rem);
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .sec_title .title_m{
+        font-size: clamp(1.6rem, calc(1rem + 0.625vw), 1.7rem);
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .member_name{
+        font-size: clamp(1.6rem, calc(1rem + 0.625vw), 1.7rem);
+    }
+    .key_member_list img{
+        width: 150px;
+    }
+    .member_links img{
+        border-radius: 10px;
+        width: 50px;
+    }
+}
+

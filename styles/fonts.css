@@ -1,0 +1,19 @@
+@font-face{
+    font-family: 'SourceHanSans';
+    src: url("../fonts/SourceHanSans-VF.otf.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'LineSeed_Bd';
+    src: url("../fonts/LINESeedJP_OTF_Bd.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'LineSeed_Eb';
+    src: url("../fonts/LINESeedJP_OTF_Eb.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'LineSeed_Rg';
+    src: url("../fonts/LINESeedJP_OTF_Rg.woff2") format("woff2");
+}

@@ -1,0 +1,73 @@
+.item_x.title_left{
+    transform: translateX(-40px);
+    opacity: 0;
+    transition: .2s;
+}
+.item_x.title_right{
+    transform: translateX(40px);
+    overflow: hidden;
+    opacity: 0;
+    transition: .2s;
+}
+
+.item_x.show{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.item_y,.item_news{
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: .5s;
+}
+
+.item_y.show, .item_news.show{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/*ニュースタイトルのアニメーション*/
+/*------------------------------------------------------------------*/
+.news_title{
+    display: flex;
+    overflow: hidden;
+}
+
+.news_title_sub{
+    overflow: hidden;
+}
+
+.news_title span{
+    display: block;
+    transform: translate(0, 105%);
+    transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+}
+
+.news_title_sub span{
+    display: block;
+    transform: translate(0, 105%);
+    transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+    transition-delay: 0.12s;
+}
+
+.news_title.-visible span {
+    transform: translate(0, 0);
+}
+
+.news_title_sub.-visible span {
+    transform: translate(0, 0);
+}
+
+.news_title span:nth-child(1) {
+    transition-delay: 0.06s;
+}
+.news_title span:nth-child(2) {
+    transition-delay: 0.12s;
+}
+.news_title span:nth-child(3) {
+    transition-delay: 0.18s;
+}
+.news_title span:nth-child(4) {
+    transition-delay: 0.24s;
+}
+/*------------------------------------------------------------------*/
