@@ -1,10 +1,22 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const fileContent = await fetchJsonFile("news/k8rw5sn9x7xr.xnfd");
+  let contents_page_2_data
+
+  const db_data = await fetchJsonFile("news/content_db.xnfd");
+
+  const max_db_files = db_data.max_db_files
+
+  const fileContent = await fetchJsonFile("news/contents_"+max_db_files+".xnfd");
+
+  if (( fileContent.length < 5 ) && ( max_db_files > 1 )){
+    contents_page_2_data = await fetchJsonFile("news/contents_"+String(Number( max_db_files - 1 ))+".xnfd");
+  } else {
+    contents_page_2_data = "none"
+  }
 
   if ((fileContent.length != 0) && (fileContent != null)){
     document.getElementById('news_list').innerHTML = ""
 
-    dedicated_data_processing(fileContent);
+    dedicated_data_processing(fileContent, contents_page_2_data);
   }
 
 }, false);
@@ -101,28 +113,34 @@ async function fetchJsonFile(url) {
   }
 }
 
-function dedicated_data_processing(json_data){
+function dedicated_data_processing(json_data, contents_page_2_data){
   let news_field_list = ""
   let date_pre_processed
   let date_processed
-  let class_data
 
   for(let processed = 0; processed < json_data.length; processed++){
     if (processed == 5){
       break
     }
+    //dbから取得するデータを降順に置き換える
+    var processed_reciprocal = json_data.length - processed - 1
     //jsonの-で表記された日付をわかりやすくする
-    date_pre_processed = (json_data[processed].date).split("-")
+    date_pre_processed = (json_data[processed_reciprocal].date).split("-")
     date_processed = date_pre_processed[0]+"."+date_pre_processed[1]+"."+date_pre_processed[2]
-
-    if (processed == 0){
-      class_data = "item_news top"
-    } else {
-      class_data = "item_news"
-    }
-
+    
     //表示用データに書き込み
-    news_field_list = news_field_list + "<li class='"+class_data+"'><a href='"+json_data[processed].url+"' class='news_story'><time datetime='"+json_data[processed].date+"'>"+date_processed+"</time><p class='post_title'>"+json_data[processed].title+"</p></a></li>"
+    news_field_list = news_field_list + "<li class='item_news'><a href='"+json_data[processed_reciprocal].url+"' class='news_story'><time datetime='"+json_data[processed_reciprocal].date+"'>"+date_processed+"</time><p class='post_title'>"+json_data[processed_reciprocal].title+"</p></a></li>"
+  }
+
+  if ( contents_page_2_data != "none" ){
+    for(let processed = 9; processed > 4 + json_data.length; processed--){
+      //jsonの-で表記された日付をわかりやすくする
+      date_pre_processed = (contents_page_2_data[processed].date).split("-")
+      date_processed = date_pre_processed[0]+"."+date_pre_processed[1]+"."+date_pre_processed[2]
+
+      //表示用データに書き込み
+      news_field_list = news_field_list + "<li class='item_news'><a href='"+contents_page_2_data[processed].url+"' class='news_story'><time datetime='"+contents_page_2_data[processed].date+"'>"+date_processed+"</time><p class='post_title'>"+contents_page_2_data[processed].title+"</p></a></li>"
+    }
   }
 
   //反映
