@@ -13,6 +13,7 @@
 
     .sec_title{
         width: 90%;
+        max-width: fit-content;
     }
 
     .sec_title.title_left{
