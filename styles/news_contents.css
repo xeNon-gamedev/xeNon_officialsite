@@ -1,3 +1,5 @@
+
+
 main{
     height: calc(fit-content + 20px);
     padding-bottom: 100px;
@@ -20,14 +22,25 @@ main{
 .contents_title{
     text-align: center;
     margin-bottom: 20px;
+    background: var(--news-contents-title-bg);
+    color: var(--news-contents-title-text);
+    padding: 10px 0px;
+    font-size: clamp( 1.5rem, calc( 1.5rem + 0.625vw), 2.3rem) !important;
+    border-radius: 5px;
 }
 
 .contents_block:nth-child(n+2){
-    border-top: 1px solid var(--main-text);
-    margin-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .contents_block{
     margin-bottom: 20px;
+    font-size: clamp(0.9rem, calc(0.9rem + 0.625vw), 1.7rem) !important;
+}
+
+.news_date_list{
+    color: var(--main-text);
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
 }

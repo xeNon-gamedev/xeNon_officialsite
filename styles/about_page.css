@@ -14,7 +14,7 @@ main{
     width: 80%;
     margin: 0 auto;
     padding: 5%;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--main-text);
     border-radius: 10px;
 }
 
