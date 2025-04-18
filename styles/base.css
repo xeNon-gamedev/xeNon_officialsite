@@ -9,6 +9,7 @@
     --sec-contents-text: none;
     --news-contents-title-bg: #333;
     --news-contents-title-text: #ffffff;
+    --news__item_title: 1.7rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,4 +1,8 @@
 @media screen and (max-width: 880px){
+    :root{
+        --news__item_title: 1.1rem;
+    }
+
     .header-logo{
         margin-left: 5%;
     }
