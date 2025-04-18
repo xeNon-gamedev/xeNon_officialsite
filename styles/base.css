@@ -352,7 +352,7 @@ header nav a:hover::after {
 }
 
 footer{
-    padding: 20px;
+    padding: 20px 7px;
     min-height: 170px;
     background: rgb(34, 34, 34);
 }
