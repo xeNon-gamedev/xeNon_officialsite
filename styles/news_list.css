@@ -56,13 +56,13 @@ main{
 
 .pagerList li a{
     display: block;
-    width: fit-content;
     background-image: linear-gradient(90deg, rgba(203, 14, 255, 1), rgba(161, 65, 253, 1));
-    padding: 10px 20px;
+    padding: 5px 20px;
     border-radius: 10px;
     transition: .2s;
     color: white;
     text-decoration: none;
+    width: fit-content;
 }
 
 .pagerList li a:hover{
@@ -81,7 +81,7 @@ main{
     display: block;
     width: fit-content;
     background-image: linear-gradient(90deg, rgb(78, 78, 78), rgb(89, 89, 89));
-    padding: 10px 20px;
+    padding: 5px 20px;
     border-radius: 10px;
     transition: .2s;
     color: white;

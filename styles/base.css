@@ -339,10 +339,12 @@ header nav a:hover::after {
 .project_title, .project_explanation{
     color: var(--main-text);
     &.project_title{
-        font-family:"LineSeed_Bd"
+        font-family:"LineSeed_Bd";
+        font-size: 2.5rem;
     }
     &.project_explanation{
         font-family: "LineSeed_Rg";
+        font-size: 1.1rem;
     }
 }
 

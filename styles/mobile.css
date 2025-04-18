@@ -59,6 +59,9 @@
         margin-top: 20px;
         width: 100%;
     }
+    .project_explanation, .project_title{
+        font-size: 1rem;
+    }
 
     footer{
         height: 220px;
