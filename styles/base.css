@@ -363,6 +363,7 @@ footer{
     color: white;
     float: right;
     font-family: 'SourceHanSans';
+    text-align: center;
 }
 .xenon_links{
     display: flex;
@@ -370,7 +371,7 @@ footer{
     margin: 0 auto;
 }
 .xenon_links img{
-    width: 60px;
+    width: 40px;
     padding: 10px;
     border-radius: 10px;
 }
