@@ -1,1 +1,23 @@
-@font-face{font-family:'SourceHanSans';src:url(../fonts/SHS-Bold.woff2) format('woff2');font-display:swap}@font-face{font-family:'LineSeed_Bd';src:url(../fonts/LineSeed_Bd.woff2) format("woff2");font-display:swap}@font-face{font-family:'LineSeed_Rg';src:url(../fonts/LineSeed_Rg.woff2) format("woff2");font-display:swap}@font-face{font-family:'BIZUDG';src:url(../fonts/BIZUDGothic-subset.woff2) format("woff2");font-display:swap}
+@font-face{
+    font-family: 'SourceHanSans';
+    src: url("../fonts/SHS-Bold.woff2") format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LineSeed_Bd';
+    src: url("../fonts/LineSeed_Bd.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LineSeed_Rg';
+    src: url("../fonts/LineSeed_Rg.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BIZUDG';
+    src: url("../fonts/BIZUDGothic-subset.woff2") format("woff2");
+    font-display: swap;
+}

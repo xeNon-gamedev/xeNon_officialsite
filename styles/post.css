@@ -1,0 +1,61 @@
+/* --- 記事ページのメインレイアウト --- */
+.post-main {
+    padding: 4rem 1rem; /* 上下の余白を多めに取る */
+}
+
+.post-content {
+    max-width: 720px; /* 読みやすいように、本文の最大幅を指定 */
+    margin: 0 auto;   /* 中央揃えにする */
+}
+
+/* --- 記事ヘッダー（タイトルと日付） --- */
+.post-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.post-title {
+    font-size: 2.5rem; /* タイトルを大きく */
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.post-date {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- 記事本文 --- */
+.post-body {
+    font-size: 1.1rem; /* 本文の文字を少し大きめに */
+    line-height: 1.8;  /* 行間を広げて読みやすく */
+    color: var(--color-text-primary);
+}
+
+/* 本文内の見出し */
+.post-body h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+.post-body p {
+    margin-bottom: 1.5rem;
+}
+
+.post-body a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* --- 記事フッター（戻るボタン） --- */
+.post-footer {
+    margin-top: 4rem;
+    text-align: center;
+}

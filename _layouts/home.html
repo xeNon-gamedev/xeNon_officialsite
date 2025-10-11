@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/styles/fonts.css">
+        <link rel="stylesheet" href="/styles/base.css">
+        <link rel="stylesheet" href="/styles/home.css">
+        <script src="/scripts/preloader.js" defer></script>
+        <script src="/scripts/components-loader.js" defer></script>
+        <meta name="description" content="北海道の現役高専生3人によって設立された、インディーゲーム制作チーム「xe-Non」の公式サイトです。" />
+        <link rel="icon" type="image/png" href="/images/icon.png">
+        <title>xe-Non Official Site / キセノン公式サイト</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CF4F4H5M2P"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CF4F4H5M2P');
+        </script>
+    </head>
+    <body>
+        <div data-component-slot="header"></div>
+        <main class="home">
+            <section class="hero" id="hero">
+                <div class="hero__background" aria-hidden="true"></div>
+                <div class="container hero__layout">
+                    <div class="hero__content" data-animate>
+                        <span class="pill-label">Indie Game Studio</span>
+                        <h1 class="hero__title">ゲームに化学反応を。</h1>
+                        <p class="hero__lead">xe-Nonは北海道を拠点に活動する高専生6人によるインディーゲーム制作チームです。世界のどこを探しても見つからない、独特なアイデアから独特な世界観のゲームを開発しています。</p>
+                        <div class="hero__actions">
+                            <a class="button button--primary" href="/news/index.html">最新ニュースを見る</a>
+                            <a class="button button--ghost" href="/members.html">メンバー紹介へ</a>
+                        </div>
+                        <ul class="hero__meta">
+                            <li class="hero__meta-item">
+                                <span class="hero__meta-label">Base</span>
+                                <span class="hero__meta-value">北海道</span>
+                            </li>
+                            <li class="hero__meta-item">
+                                <span class="hero__meta-label">Members</span>
+                                <span class="hero__meta-value">6名</span>
+                            </li>
+                            <li class="hero__meta-item">
+                                <span class="hero__meta-label">Focus</span>
+                                <span class="hero__meta-value">インディーゲーム</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hero__visual" data-animate data-animate-delay="1">
+                        <div class="hero__frame">
+                            <picture>
+                                <source srcset="/images/cl_logo.avif" type="image/avif">
+                                <source srcset="/images/cl_logo.webp" type="image/webp">
+                                <img src="/images/cl_logo.webp" alt="xe-Non 2025年テーマビジュアル" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section--surface" id="news">
+                <div class="container stack-gap-lg">
+                    <div class="section-heading" data-animate>
+                        <div>
+                            <p class="section-heading__eyebrow">Updates</p>
+                            <h2 class="section-heading__title">Latest News</h2>
+                        </div>
+                        <a class="section-heading__cta" href="/news/index.html">すべて見る</a>
+                    </div>
+                        <ul class="news-cards" id="news_list" data-animate data-animate-delay="1">
+                            {% if site.posts.size == 0 %}
+                                <li class="news-card news-card--placeholder">現在、お知らせはありません。</li>
+                            {% else %}
+                                {% for post in site.posts limit:5 %}  {% assign delay = forloop.index0 | modulo: 3 | plus: 1 %}
+
+                                    <li class="news-card" data-animate data-animate-delay="{{ delay }}">
+                                        {% if post.url %}
+                                            <a class="news-card__link" href="{{ post.url | relative_url }}">
+                                                <span class="news-card__category">Update</span>
+                                                <h3 class="news-card__title">{{ post.title | escape }}</h3>
+                                                <time class="news-card__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+                                                <p class="news-card__excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+                                                <span class="news-card__more">詳細を見る</span>
+                                            </a>
+                                        {% else %}
+                                            <div class="news-card__link news-card__link--static">
+                                                <span class="news-card__category">Update</span>
+                                                <h3 class="news-card__title">{{ post.title | escape }}</h3>
+                                                <time class="news-card__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+                                                <p class="news-card__excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+                                                <span class="news-card__more">詳細準備中</span>
+                                            </div>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                </div>
+            </section>
+            <section class="section" id="about">
+                <div class="container about">
+                <div class="about__panel" data-animate>
+                    <span class="pill-label">About xe-Non</span>
+                    <h2 class="section-heading__title">What is “xe-Non”?</h2>
+                    <p class="about__lead">
+                        「誰も真似できないような面白いゲームを創る」ことを追求する、個性派インディーゲームチームです。Godotなどのオープンソースツールを駆使し、メンバーそれぞれの独特な感性を掛け合わせることで、まだ見ぬユニークな世界観を持つゲームを開発しています。
+                    </p>
+                    <ul class="about__list">
+                        <li>
+                            Godotエンジンを主軸に、BlenderやKrita等を活用。柔軟な発想をスピーディに形にするワークフローを構築しています。
+                        </li>
+                        <li>
+                            チームの最大の武器は、メンバーそれぞれの個性とアイデア。常識にとらわれず、他のどこにもない奇妙で面白いゲーム体験を目指します。
+                        </li>
+                        <li>
+                            自分たちが面白いと信じるものを、自らの手で作品として創り上げること。その過程で技術を磨き、成長し続けることに情熱を注いでいます。
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="about__card" data-animate data-animate-delay="1">
+                        <h3>Our Vision</h3>
+                        <p><strong>私たちの頭の中は、まだ誰も知らない物語と、奇妙なアイデアで溢れている。</strong><br><br>その衝動を、Godotという翼で、Blenderという手で、作品として世界に解き放つ。<br>私たちのビジョンは、ただゲームを創ることではない。自分たちの「好き」と「狂気」を詰め込んだ作品で、誰かの心をざわつかせることです。</p>
+                        <span class="about__stamp">Team xe-Non</span>
+                    </div>
+                </div>
+            </section>
+            <section class="section section--surface" id="members">
+                <div class="container">
+                    <div class="member-teaser" data-animate>
+                        <div class="member-teaser__content">
+                            <span class="pill-label">Team xe-Non</span>
+                            <h2 class="member-teaser__title">Core Creators</h2>
+                            <p class="member-teaser__text">xe-Nonを形づくる6名は、専用ページでじっくりご紹介しています。</p>
+                        </div>
+                        <div class="member-teaser__actions">
+                            <a class="button button--primary" href="/members.html">メンバー紹介へ</a>
+                            <a class="button button--ghost" href="/aboutsite/index.html">団体概要を見る</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section" id="projects">
+                <div class="container stack-gap-md">
+                    <div class="section-heading" data-animate>
+                        <div>
+                            <p class="section-heading__eyebrow">Projects</p>
+                            <h2 class="section-heading__title">Works in Progress</h2>
+                        </div>
+                    </div>
+                    <article class="project-card" data-animate data-animate-delay="1">
+                        <span class="project-card__badge pill-label">In Development</span>
+                        <h3 class="project-card__title">Cooking is Chemistry (開発中...)</h3>
+                        <p class="project-card__description">あなたはとある国のシェフ。使う予定の調理場は、国の科学者によって危ないものがたくさん仕掛けられてます。あなたは粛清されずに料理を終え、無事に生き帰れるのか...</p>
+                        <p class="project-card__note">※近日中に公開予定。開発中のため、内容は変更となる可能性があります。</p>
+                        <p class="project-card__note">とある場所で先行公開予定です。</p>
+                    </article>
+                    <article class="project-card" data-animate data-animate-delay="1">
+                        <span class="project-card__badge pill-label">In Development</span>
+                        <h3 class="project-card__title">??? (開発中...)</h3>
+                        <p class="project-card__description">街にあふれるガジェットを駆使し、異世界からの脱出を目指すアクションアドベンチャー。妖怪とのバトルや環境ギミックが絡み合う、スリリングなゲームプレイを構築中です。</p>
+                        <p class="project-card__note">※開発中のため、内容は変更となる可能性があります。</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <div data-component-slot="footer"></div>
+    </body>
+    <script src="/scripts/topPage_animation.js"></script>
+</html>

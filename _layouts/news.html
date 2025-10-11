@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/styles/fonts.css">
+        <link rel="stylesheet" href="/styles/base.css">
+        <link rel="stylesheet" href="/styles/news_list.css">
+        <script src="/scripts/preloader.js" defer></script>
+        <script src="/scripts/components-loader.js" defer></script>
+        <meta name="description" content="北海道の現役高専生3人によって設立された、インディーゲーム制作チーム「xe-Non」の公式サイトです。" />
+        <link rel="icon" type="image/png" href="/images/icon.png">
+        <title>ニュース一覧 - xe-Non Official Site</title>
+    </head>
+    <body>
+        <div data-component-slot="header"></div>
+        <main class="news-list">
+            <div class="header-margin"></div>
+            <h1 class="news_list_title">ニュース一覧</h1>
+            
+            <ul class="news__list__field" id="news_list">
+                {% comment %} paginatorがあればそれを使い、なければsite.postsを全件表示 {% endcomment %}
+                {% if paginator.posts %}
+                    {% assign posts_to_show = paginator.posts %}
+                {% else %}
+                    {% assign posts_to_show = site.posts %}
+                {% endif %}
+                
+                {% for post in posts_to_show %}
+                <li class="news__item">
+                    <a href="{{ post.url | relative_url }}" class="news_story">
+                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+                        <p class="post_title">{{ post.title }}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% if paginator.total_pages and paginator.total_pages > 1 %}
+            <div>
+                <ul class="pagerList">
+                    {% comment %} 1ページ目へのリンク {% endcomment %}
+                    {% if paginator.page == 1 %}
+                        <li class="pager_thisPage"><p>1</p></li>
+                    {% else %}
+                        <li><a href="{{ '/news/' | relative_url }}">1</a></li>
+                    {% endif %}
+
+                    {% comment %} 中間のページ番号 ... 2 3 4 ... のように表示 {% endcomment %}
+                    {% assign start_page = paginator.page | minus: 2 %}
+                    {% if start_page < 2 %}{% assign start_page = 2 %}{% endif %}
+                    {% assign end_page = paginator.page | plus: 2 %}
+                    {% assign last_page = paginator.total_pages %}
+                    {% assign last_minus_one = last_page | minus: 1 %}
+                    
+                    {% if start_page > 2 %}
+                        <li class="pager_delimiter"><p>...</p></li>
+                    {% endif %}
+
+                    {% comment %} ページ2以降のリンクを生成 {% endcomment %}
+                    {% for i in (2..paginator.total_pages) %}
+                        {% if i < paginator.total_pages and i >= start_page and i <= end_page %}
+                            {% if i == paginator.page %}
+                                <li class="pager_thisPage"><p>{{ i }}</p></li>
+                            {% else %}
+                                {% if i == 2 %}
+                                    <li><a href="{{ paginator.next_page_path | relative_url }}">{{ i }}</a></li>
+                                {% else %}
+                                    <li><a href="/news/page/{{ i }}/">{{ i }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if end_page < last_minus_one %}
+                        <li class="pager_delimiter"><p>...</p></li>
+                    {% endif %}
+
+                    {% comment %} 最後のページへのリンク {% endcomment %}
+                    {% if paginator.total_pages > 1 %}
+                        {% if paginator.page == paginator.total_pages %}
+                            <li class="pager_thisPage"><p>{{ paginator.total_pages }}</p></li>
+                        {% else %}
+                            <li><a href="/news/page/{{ paginator.total_pages }}/">{{ paginator.total_pages }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+            </main>
+        <div data-component-slot="footer"></div>
+    </body>
+</html>
