@@ -1,0 +1,11 @@
+- id: boxfish-overflow
+  title: "Boxfish Overflow!"
+  status: "配信中"
+  summary: "ハコフグは膨らむ。…だけじゃない、レジスタも持っている！？ <br>レジスタを展開し、難解なゲートをくぐり抜け、 正しいパターンを見つけ出してゴールを目指そう。<br>ひらめきとロジックが試される、新感覚パズルゲーム登場。"
+  highlight: "githubにて配布中"
+  engines:
+    - Bevy
+  tags:
+    - パズル
+  cover: "/images/works/bfo.png"
+  link: "https://github.com/kinoko0518/Boxfish-Overflow-"

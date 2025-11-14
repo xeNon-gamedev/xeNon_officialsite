@@ -1,0 +1,24 @@
+{% assign section_items = include.works | default: empty %}
+{% if section_items and section_items.size > 0 %}
+<section class="works-section works-section--profiles">
+    <div class="container">
+        <div class="works-section__header" data-animate>
+            <div>
+                {% if include.eyebrow %}
+                <p class="section-heading__eyebrow">{{ include.eyebrow }}</p>
+                {% endif %}
+                <h2 class="section-heading__title">{{ include.title }}</h2>
+            </div>
+            {% if include.intro %}
+            <p class="works-section__intro">{{ include.intro }}</p>
+            {% endif %}
+        </div>
+
+        <div class="works-cards">
+            {% for work in section_items %}
+                {% include works-card.html work=work index=forloop.index0 %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

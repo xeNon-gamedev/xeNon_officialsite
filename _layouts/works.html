@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MGXKWK4G');</script>
+        <!-- End Google Tag Manager -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="xe-Non が制作しているゲーム作品の一覧ページです。リリース済みのタイトルから開発中のプロジェクトをまとめて紹介します。" />
+        <link rel="icon" type="image/png" href="/images/icon.png" />
+        <link rel="stylesheet" href="/styles/fonts.css">
+        <link rel="stylesheet" href="/styles/base.css">
+        <link rel="stylesheet" href="/styles/hamburger.css">
+        <link rel="stylesheet" href="/styles/works.css" />
+        <script src="/scripts/preloader.js" defer></script>
+        <script src="/scripts/components-loader.js" defer></script>
+        <title>Works | xe-Non</title>
+    </head>
+    <body class="works">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div data-component-slot="header"></div>
+    {% assign works = site.data.works | default: page.works %}
+    {% assign works_size = works | size %}
+    {% assign works_in_development = works | where: 'status', '開発中' %}
+    {% assign works_in_release = works | where: 'status', '配信中' %}
+    {% assign works_other = works | reject: 'status', '開発中' %}
+    {% assign works_other = works_other | reject: 'status', '配信中' %}
+        <main>
+            <section class="works-hero">
+                <div class="works-hero__background" aria-hidden="true"></div>
+                <div class="container works-hero__content" data-animate>
+                    <span class="pill-label">xe-Non Works</span>
+                    <h1 class="works-hero__title">タイトル一覧</h1>
+                    <p class="works-hero__lead">リリース済みのタイトルから現在開発を行っているタイトルをまとめてご紹介いたします。</p>
+                    <div class="works-hero__metrics" data-animate data-animate-delay="1">
+                        <div class="works-hero__metric">
+                            <span class="works-hero__metric-label">Projects</span>
+                            <span class="works-hero__metric-value">{{ works_size }}本</span>
+                        </div>
+                        <div class="works-hero__metric">
+                            <span class="works-hero__metric-label">Primary Engine</span>
+                            <span class="works-hero__metric-value">Godot 4 / Unity</span>
+                        </div>
+                        <div class="works-hero__metric">
+                            <span class="works-hero__metric-label">Last Update</span>
+                            <span class="works-hero__metric-value">{{ site.time | date: '%Y.%m.%d' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {% include works-section.html
+                works=works_in_development
+                eyebrow='In Development'
+                title='開発中のタイトル'
+                intro='新しい体験を模索中のプロジェクト群です。コアとなる遊びや世界観を磨きながら、順次アップデートをお届けします。'
+            %}
+
+            {% include works-section.html
+                works=works_in_release
+                eyebrow='Now Streaming'
+                title='配信中のタイトル'
+                intro='すでに遊べるタイトルはこちら。ストアやページへアクセスして、xe-Nonのゲームを体験してみてください。'
+            %}
+
+            {% if works_in_development.size == 0 and works_in_release.size == 0 and works_other.size == 0 %}
+            <section class="works-section works-section--profiles">
+                <div class="container">
+                    <div class="works-section__header" data-animate>
+                        <div>
+                            <p class="section-heading__eyebrow">Line Up</p>
+                            <h2 class="section-heading__title">準備中です</h2>
+                        </div>
+                        <p class="works-section__intro">現在公開可能なタイトルはありません。最新情報はSNSやブログで随時お知らせします。</p>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+        </main>
+        <div data-component-slot="footer"></div>
+        <script src="/scripts/topPage_animation.js" defer></script>
+    </body>
+</html>

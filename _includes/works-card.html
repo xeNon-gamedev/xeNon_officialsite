@@ -1,0 +1,41 @@
+<article class="works-card" id="{{ include.work.id }}" data-animate data-animate-delay="{{ include.index | modulo: 3 }}">
+    <div class="works-card__media">
+        <div class="works-card__visual">
+            <picture>
+                <img class="works-card__cover" src="{{ include.work.cover | default: '/images/cl_logo.webp' }}" alt="{{ include.work.title }}" loading="lazy" decoding="async">
+            </picture>
+            <span class="works-card__status">{{ include.work.status }}</span>
+        </div>
+        {% if include.work.tags %}
+        <ul class="works-card__tags">
+            {% for tag in include.work.tags %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="works-card__content">
+        <header class="works-card__header">
+            <h3 class="works-card__title">{{ include.work.title }}</h3>
+            {% if include.work.engines %}
+            <p class="works-card__subtitle">{{ include.work.engines | join: ' / ' }}</p>
+            {% endif %}
+        </header>
+        <p class="works-card__summary">{{ include.work.summary }}</p>
+        <dl class="works-card__meta">
+            <div>
+                <dt>ハイライト</dt>
+                <dd>{{ include.work.highlight }}</dd>
+            </div>
+            <div>
+                <dt>状況</dt>
+                <dd>{{ include.work.status }}</dd>
+            </div>
+        </dl>
+        {% if include.work.link %}
+        <div class="works-card__actions">
+            <a class="button button--ghost" href="{{ include.work.link }}">詳細を見る</a>
+        </div>
+        {% endif %}
+    </div>
+</article>
