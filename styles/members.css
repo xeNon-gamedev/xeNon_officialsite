@@ -96,18 +96,36 @@
     padding: clamp(3rem, 7vw, 4.8rem) 0;
 }
 
+
 .members-section--profiles {
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.88);
     border-top: 1px solid rgba(16, 24, 40, 0.08);
     border-bottom: 1px solid rgba(16, 24, 40, 0.08);
 }
 
+@media (min-width: 1024px) and (pointer: fine) {
+    @supports (backdrop-filter: blur(10px)) {
+        .members-section--profiles {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(10px);
+        }
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     .members-section--profiles {
-        background: rgba(18, 24, 36, 0.75);
+        background: rgba(18, 24, 36, 0.92);
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @media (min-width: 1024px) and (pointer: fine) {
+        @supports (backdrop-filter: blur(10px)) {
+            .members-section--profiles {
+                background: rgba(18, 24, 36, 0.75);
+                backdrop-filter: blur(10px);
+            }
+        }
     }
 }
 
@@ -142,9 +160,10 @@
     gap: clamp(1.5rem, 3vw, 2.4rem);
     padding: clamp(1.8rem, 4vw, 2.6rem);
     border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(244, 247, 255, 0.88));
-    border: 1px solid rgba(16, 24, 40, 0.08);
-    box-shadow: var(--shadow-soft);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(244, 247, 255, 0.9));
+    border: 1px solid rgba(16, 24, 40, 0.06);
+    box-shadow: 0 18px 26px -20px rgba(11, 11, 31, 0.45);
+    will-change: transform;
 }
 
 @media (min-width: 960px) {
@@ -156,8 +175,9 @@
 
 @media (prefers-color-scheme: dark) {
     .member-profile {
-        background: linear-gradient(145deg, rgba(18, 24, 36, 0.95), rgba(14, 18, 32, 0.9));
-        border: 1px solid rgba(203, 206, 212, 0.08);
+        background: linear-gradient(145deg, rgba(18, 24, 36, 0.92), rgba(14, 18, 32, 0.88));
+        border: 1px solid rgba(203, 206, 212, 0.06);
+        box-shadow: 0 18px 24px -18px rgba(0, 0, 0, 0.55);
     }
 }
 

@@ -361,6 +361,8 @@ layout: null
                     id="myForm" 
                     action="https://script.google.com/macros/s/AKfycbx5fKQMqlwAB8JbhIvmdZUwSnfjhksJ2YG-uadL52vMuuRFIogoE8NV_5U0MolUunWL/exec">
 
+                    <input type="hidden" name="timestamp" id="timestamp">
+
                     <div class="form-field">
                         <label for="name">氏名 <span class="required">必須</span></label>
                         <input type="text" id="name" name="name" required>
@@ -394,7 +396,10 @@ layout: null
                         <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
-
+                    <div style="display:none;">
+                        <label for="trap">Bot Check</label>
+                        <input type="text" id="trap" name="trap">
+                    </div>
                     <button type="submit" id="submitButton" class="button button--primary">
                         送信する
                     </button>
@@ -408,6 +413,7 @@ layout: null
     <div data-component-slot="footer"></div>
     
     <script>
+        document.getElementById('timestamp').value = Date.now();
         const inquiryTypeSelect = document.getElementById("inquiryType");
         const detailWrapper = document.getElementById("inquiryTypeDetailWrapper");
         const detailInput = document.getElementById("inquiryTypeDetail");
@@ -422,7 +428,6 @@ layout: null
                 detailInput.value = "";
             }
         });
-        
 
         const form = document.getElementById("myForm");
         const buttons = document.querySelectorAll("#submitButton"); 
