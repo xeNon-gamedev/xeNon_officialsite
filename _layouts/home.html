@@ -1,6 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "xe-Non",
+        "url": "https://xe-non.com",
+        "logo": "https://xe-non.com/images/favicon.png",
+        "description": "北海道の現役高専生3人によって設立された、インディーゲーム制作チーム「xe-Non」の公式サイトです。",
+        "sameAs": [
+            "https://x.com/xenon_nit",
+            "https://github.com/xeNon-gamedev",
+        ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "トップページ",
+            "url": "https://xe-non.com"
+            },
+            {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "メンバー紹介",
+            "url": "https://xe-non.com/members/"
+            },
+            {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "ニュース",
+            "url": "https://xe-non.com/news/"
+            },
+            {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "ワークス",
+            "url": "https://xe-non.com/works/"
+            },
+            {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "お問い合わせ",
+            "url": "（団体概要ページのURL）"
+            }
+        ]
+        }
+        </script>
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,6 +60,16 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-MGXKWK4G');</script>
         <!-- End Google Tag Manager -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZBVEE52X3"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DZBVEE52X3');
+        </script>
+        <!-- End Google tag (gtag.js) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <link rel="stylesheet" href="/styles/fonts.css">
@@ -16,18 +78,13 @@
         <link rel="stylesheet" href="/styles/home.css">
         <script src="/scripts/preloader.js" defer></script>
         <script src="/scripts/components-loader.js" defer></script>
-        <meta name="description" content="北海道の現役高専生3人によって設立された、インディーゲーム制作チーム「xe-Non」の公式サイトです。" />
-        <link rel="icon" type="image/png" href="/images/icon.png">
+        <link rel="icon" type="image/png" href="/images/favicon.png">
+        {% include meta-social.html
+            title='xe-Non'
+            description='北海道の現役高専生3人によって設立された、インディーゲーム制作チーム「xe-Non」の公式サイトです。'
+            image='/images/cl_logo.webp'
+        %}
         <title>xe-Non</title>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CF4F4H5M2P"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-CF4F4H5M2P');
-        </script>
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->

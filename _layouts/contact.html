@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="xe-Nonへのお問い合わせフォームです。ご意見、ご要望、苦情などはこちらからお願いいたします。" />
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <link rel="stylesheet" href="/styles/fonts.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/hamburger.css">
+    <link rel="stylesheet" href="/styles/works.css"> 
+    <script src="/scripts/preloader.js" defer></script>
+    <script src="/scripts/components-loader.js" defer></script>
+    <title>Contact | xe-Non</title>
+    <style>
+        /* (style タグの中身は変更なし) */
+        main { display: block; padding-bottom: clamp(4rem, 10vw, 6rem); }
+        #myForm { background: var(--color-surface-solid); padding: clamp(1.8rem, 4vw, 2.6rem); border-radius: var(--radius-lg); box-shadow: var(--shadow-medium); width: 100%; max-width: 720px; box-sizing: border-box; margin: clamp(2rem, 5vw, 3rem) auto 0; }
+        #myForm div { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-family: "LineSeed_Bd", sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); }
+        label span.required { font-size: 0.9em; color: var(--color-accent); margin-left: 5px; }
+        input[type="text"], input[type="email"], textarea, select { width: 100%; padding: 14px 16px; border: 1px solid var(--color-border); background-color: var(--color-background); color: var(--color-text-primary); border-radius: var(--radius-sm); box-sizing: border-box; font-size: 1rem; font-family: inherit; transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus { border-color: var(--color-accent); box-shadow: 0 0 10px rgba(78, 202, 255, 0.3); outline: none; }
+        textarea { height: 160px; resize: vertical; }
+        #status { margin-top: 20px; font-weight: 700; text-align: center; font-size: 1.1em; }
+    </style>
+</head>
+<body class="works">
+    
+    <div data-component-slot="header"></div>
+    <section class="works-hero">
+        <div class="works-hero__background" aria-hidden="true"></div>
+        <div class="container works-hero__content">
+            <span class="pill-label">Contact</span>
+            <h1 class="works-hero__title">お問い合わせ</h1>
+            <p class="works-hero__lead">xe-Nonへのご意見、ご要望、苦情などはこちらのフォームよりお願いいたします。</p>
+        </div>
+    </section>
+  
+    <main>
+      <div class="container">
+        
+        <form 
+            id="myForm" 
+            method="post" 
+            target="form_a_iframe" 
+            action="https://script.google.com/macros/s/AKfycbx5fKQMqlwAB8JbhIvmdZUwSnfjhksJ2YG-uadL52vMuuRFIogoE8NV_5U0MolUunWL/exec">
+          <input type="hidden" name="clientOrigin" id="clientOriginInput">
+          
+          <button type="submit" id="submitButton" class="button button--primary" style="width: 100%;">
+            送信する
+          </button>
+          <div>
+            <label for="name">氏名 <span class="required">必須</span></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="furigana">ふりがな <span class="required">必須</span></label>
+            <input type="text" id="furigana" name="furigana" required>
+          </div>
+          <div>
+            <label for="company">会社名</label>
+            <input type="text" id="company" name="company">
+          </div>
+          <div>
+            <label for="email">メールアドレス <span class="required">必須</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="inquiryType">お問い合わせ種類 <span class="required">必須</span></label>
+            <select id="inquiryType" name="inquiryType" required>
+              <option value="">選択してください</option>
+              <option value="公式サイトの苦情">公式サイトの苦情</option>
+              <option value="ご意見・ご要望">ご意見・ご要望</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+          <div id="inquiryTypeDetailWrapper" style="display: none;">
+            <label for="inquiryTypeDetail">その他（詳細）<span class="required">必須</span></label>
+            <input type="text" id="inquiryTypeDetail" name="inquiryTypeDetail">
+          </div>
+          <div>
+            <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" id="submitButton" class="button button--primary" style="width: 100%;">
+            送信する
+          </button>
+        </form>
+        
+        <div id="status"></div>
+      </div>
+    </main>
+
+    <div data-component-slot="footer"></div>
+    
+    <iframe name="form_a_iframe" style="display:none;"></iframe>
+
+    <script>
+        // (「その他」詳細欄の表示ロジックは変更なし)
+        const inquiryTypeSelect = document.getElementById("inquiryType");
+        const detailWrapper = document.getElementById("inquiryTypeDetailWrapper");
+        const detailInput = document.getElementById("inquiryTypeDetail");
+        
+        inquiryTypeSelect.addEventListener("change", function() {
+          if (this.value === "その他") {
+            detailWrapper.style.display = "block";
+            detailInput.required = true;
+          } else {
+            detailWrapper.style.display = "none";
+            detailInput.required = false;
+            detailInput.value = "";
+          }
+        });
+      
+        // ★★★ ここからが変更点 ★★★
+const form = document.getElementById("myForm");
+        const button = document.getElementById("submitButton");
+        const statusDiv = document.getElementById("status");
+        const originInput = document.getElementById("clientOriginInput"); // ★追加
+        
+        let formSubmitted = false;
+
+        // 1. フォームが「送信」ボタンでサブミットされた時の処理
+        form.addEventListener("submit", function(event) {
+          
+          // ★追加：送信直前に、現在のドメインをinputに設定
+          originInput.value = window.location.origin; 
+          
+          button.disabled = true;
+          statusDiv.textContent = "送信中...";
+          statusDiv.style.color = "var(--color-text-primary)";
+          formSubmitted = true;
+        });
+
+        // 2. ★API(A)のiframeから結果(postMessage)が返ってきた時の処理
+        window.addEventListener("message", function(event) {
+            // event.origin が "https://script.google.com" であることを確認
+            if (event.origin !== "https://script.google.com") {
+                return;
+            }
+            if (!formSubmitted) {
+                return;
+            }
+            
+            const resultMessage = event.data;
+            
+            if (resultMessage.startsWith("success:")) {
+                // (成功時の処理は変更なし)
+                statusDiv.textContent = resultMessage.substring(8);
+                statusDiv.style.color = "green";
+                form.reset();
+                detailWrapper.style.display = "none";
+                detailInput.required = false;
+            } else {
+                // (失敗時の処理は変更なし)
+                statusDiv.textContent = "エラー: " + resultMessage.substring(6);
+                statusDiv.style.color = "#FF6B6B";
+            }
+            
+            button.disabled = false;
+            formSubmitted = false;
+        });
+    </script>
+</body>
+</html>

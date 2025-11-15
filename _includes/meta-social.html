@@ -1,0 +1,66 @@
+{% assign canonical_url = page.url | absolute_url %}
+{% assign meta_title = include.title | default: page.og_title | default: page.title | default: site.title %}
+{% assign meta_description = include.description | default: page.og_description | default: page.description | default: site.description %}
+{% assign meta_excerpt = page.excerpt | strip_html | strip_newlines %}
+{% if meta_description == nil or meta_description == '' %}
+  {% assign meta_description = meta_excerpt %}
+{% endif %}
+{% assign meta_description = meta_description | strip_html | strip_newlines | truncate: 160, '' %}
+{% assign og_image = include.image | default: page.og_image | default: site.og_image %}
+{% if og_image %}
+  {% if og_image contains '://' %}
+    {% assign og_image_url = og_image %}
+  {% else %}
+    {% assign og_image_url = og_image | absolute_url %}
+  {% endif %}
+{% endif %}
+{% assign og_type = include.type | default: page.og_type %}
+{% if og_type == nil or og_type == '' %}
+  {% if page.layout == 'post' or page.collection == 'posts' %}
+    {% assign og_type = 'article' %}
+  {% else %}
+    {% assign og_type = 'website' %}
+  {% endif %}
+{% endif %}
+{% assign site_name = site.site_name | default: site.title %}
+{% assign twitter_card = include.twitter_card | default: page.twitter_card %}
+{% if twitter_card == nil or twitter_card == '' %}
+  {% if og_image_url %}
+    {% assign twitter_card = 'summary_large_image' %}
+  {% else %}
+    {% assign twitter_card = 'summary' %}
+  {% endif %}
+{% endif %}
+
+<meta property="og:site_name" content="{{ site_name }}" />
+<meta property="og:type" content="{{ og_type }}" />
+<meta property="og:title" content="{{ meta_title | strip }}" />
+{% if meta_description %}
+<meta property="og:description" content="{{ meta_description | strip }}" />
+<meta name="description" content="{{ meta_description | strip }}" />
+{% endif %}
+<meta property="og:url" content="{{ canonical_url }}" />
+{% if og_image_url %}
+<meta property="og:image" content="{{ og_image_url }}" />
+{% endif %}
+
+<meta name="twitter:card" content="{{ twitter_card }}" />
+{% if site.twitter_username %}
+<meta name="twitter:site" content="@{{ site.twitter_username | replace: '@', '' }}" />
+{% endif %}
+<meta name="twitter:title" content="{{ meta_title | strip }}" />
+{% if meta_description %}
+<meta name="twitter:description" content="{{ meta_description | strip }}" />
+{% endif %}
+{% if og_image_url %}
+<meta name="twitter:image" content="{{ og_image_url }}" />
+{% endif %}
+{% if page.author %}
+<meta property="article:author" content="{{ page.author }}" />
+{% endif %}
+{% if page.date %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+{% endif %}
+{% if page.last_modified_at %}
+<meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />
+{% endif %}
