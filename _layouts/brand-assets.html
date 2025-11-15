@@ -160,12 +160,13 @@
 
         .brand-preview {
             border: 1px dashed rgba(15, 23, 42, 0.2);
-            border-radius: 8px;
-            padding: 1.75rem;
+            border-radius: 12px;
+            padding: clamp(2rem, 3vw, 3rem);
             display: flex;
             justify-content: center;
             align-items: center;
             background: #ffffff;
+            min-height: clamp(220px, 35vw, 320px);
         }
 
         .brand-preview--dark {
@@ -177,8 +178,10 @@
         }
 
         .brand-preview img {
-            max-width: 100%;
+            width: clamp(240px, 70%, 460px);
+            max-height: clamp(120px, 18vw, 200px);
             height: auto;
+            object-fit: contain;
         }
 
         .brand-downloads {

@@ -38,6 +38,8 @@ assets:
     downloads:
       - label: SVG
         url: /images/xe-non_small.svg
+      - label: PNG
+        url: /images/xe-non_small.png
   - name: xe-Non Logo small<br>（ダーク背景）
     tag: Utility
     theme: dark
@@ -47,15 +49,19 @@ assets:
     downloads:
       - label: SVG
         url: /images/xe-non_small_dark.svg
+      - label: PNG
+        url: /images/xe-non_small_dark.png
   - name: xe-Non Logo square（ライト背景）
     tag: Utility
     theme: light
-    description: 正方形が必要なスペースやアプリアイコンとして利用できるシンプルなシンボルです。
+    description: 正方形のxe-Nonロゴです。正方形が必要なスペースやアプリアイコンとして利用できるシンプルなシンボルです。
     preview: /images/xe-non.svg
     alt: xe-Nonアイコン(small)
     downloads:
       - label: SVG
-        url: /images/xe-non_small.svg
+        url: /images/xe-non.svg
+      - label: PNG
+        url: /images/xe-non_vertical.png
   - name: xe-Non Logo square（ダーク背景）
     tag: Utility
     theme: dark
@@ -64,7 +70,9 @@ assets:
     alt: xe-Nonダークテーマアイコン(small)
     downloads:
       - label: SVG
-        url: /images/xe-non_small_dark.svg
+        url: /images/xe-non_square_dark.svg
+      - label: PNG
+        url: /images/xe-non_square_dark.png
 guidelines:
   - ロゴの縦横比を変更したり、独自の装飾や枠線を加えないでください。
   - 文字や他のオブジェクトからロゴの高さの50%以上の余白を確保してください。
