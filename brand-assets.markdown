@@ -29,7 +29,7 @@ assets:
         url: /images/xe-non_horizontal_dark.svg
       - label: PNG
         url: /images/xe-non_horizontal_dark.png
-  - name: xe-Non Logo small（ライト背景）
+  - name: xe-Non Logo small<br>（ライト背景）
     tag: Utility
     theme: light
     description: 正方形が必要なスペースやアプリアイコンとして利用できるシンプルなシンボルです。
@@ -38,7 +38,7 @@ assets:
     downloads:
       - label: SVG
         url: /images/xe-non_small.svg
-  - name: xe-Non Logo small（ダーク背景）
+  - name: xe-Non Logo small<br>（ダーク背景）
     tag: Utility
     theme: dark
     description: 暗い背景上で高い視認性を保つ反転バージョン。正方形が必要なスペースやアプリアイコンとして利用できるシンプルなシンボルです。
