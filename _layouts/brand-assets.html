@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include meta-social.html
+        title=page.title
+        description=page.hero_description
+        image=page.og_image
+    %}
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="stylesheet" href="/styles/fonts.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/hamburger.css">
+    <link rel="stylesheet" href="/styles/works.css">
+    <script src="/scripts/preloader.js" defer></script>
+    <script src="/scripts/components-loader.js" defer></script>
+    <title>{{ page.title }} | xe-Non</title>
+    <style>
+        :root {
+            --brand-surface: #f5f6fb;
+            --brand-panel: #ffffff;
+            --brand-heading: #0f172a;
+            --brand-muted: #5a6274;
+            --brand-border: rgba(15, 23, 42, 0.12);
+            --brand-gradient: linear-gradient(135deg, #0f172a, #1f3a68);
+        }
+
+        ::selection {
+            background: rgba(43, 86, 177, 0.85);
+            color: #ffffff;
+        }
+
+        ::-moz-selection {
+            background: rgba(43, 86, 177, 0.85);
+            color: #ffffff;
+        }
+
+        .brand-hero__lead{
+            color: #ffffff;
+        }
+
+        body.brand-assets-page {
+            background: var(--brand-surface);
+            color: var(--brand-heading);
+        }
+
+        main {
+            padding-bottom: clamp(4rem, 8vw, 6rem);
+        }
+
+        .brand-hero {
+            background: var(--brand-gradient);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .brand-hero .works-hero__content {
+            padding: clamp(3rem, 8vw, 4.5rem) 0;
+        }
+
+        .brand-hero .pill-label {
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+
+        .brand-hero__meta {
+            margin-top: 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 1.5rem;
+        }
+
+        .brand-hero__meta-item {
+            min-width: 190px;
+        }
+
+        .brand-hero__meta-label {
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .brand-hero__meta-value {
+            margin-top: 0.4rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .brand-wrapper {
+            margin-top: clamp(2rem, 5vw, 3rem);
+            max-width: 1100px;
+            padding: 0 clamp(1.2rem, 4vw, 2.5rem);
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(2rem, 6vw, 3rem);
+        }
+
+        .brand-intro {
+            background: #eef2ff;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 8px;
+            padding: clamp(1.5rem, 3vw, 2.25rem);
+            color: var(--brand-heading);
+            line-height: 1.8;
+        }
+
+        .brand-intro h2 {
+            margin-top: 0;
+            font-family: "LineSeed_Bd", sans-serif;
+            letter-spacing: 0.1em;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--brand-muted);
+        }
+
+        .brand-assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+        }
+
+        .brand-card {
+            background: var(--brand-panel);
+            border: 1px solid var(--brand-border);
+            border-radius: 10px;
+            padding: clamp(1.4rem, 3vw, 2rem);
+            box-shadow: 0 18px 30px rgba(15, 23, 42, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .brand-card__badge {
+            align-self: flex-start;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 600;
+            background: rgba(15, 98, 254, 0.13);
+            color: #0f62fe;
+        }
+
+        .brand-card__title {
+            margin: 0;
+            font-size: 1.2rem;
+            font-family: "LineSeed_Bd", sans-serif;
+        }
+
+        .brand-card__description {
+            color: var(--brand-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .brand-preview {
+            border: 1px dashed rgba(15, 23, 42, 0.2);
+            border-radius: 8px;
+            padding: 1.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+        }
+
+        .brand-preview--dark {
+            background: #0f172a;
+        }
+
+        .brand-preview--dark img {
+            filter: drop-shadow(0 8px 18px rgba(2, 6, 23, 0.4));
+        }
+
+        .brand-preview img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .brand-downloads {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .brand-downloads__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(15, 23, 42, 0.2);
+            text-decoration: none;
+            color: var(--brand-heading);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .brand-downloads__link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+        }
+
+        .brand-guidelines {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 8px;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        .brand-guidelines h3 {
+            margin-top: 0;
+            font-size: 1.15rem;
+            font-family: "LineSeed_Bd", sans-serif;
+        }
+
+        .brand-guidelines ul {
+            margin: 0.8rem 0 0;
+            padding-left: 1.15rem;
+            color: var(--brand-muted);
+            line-height: 1.8;
+        }
+
+        .brand-support {
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            border-radius: 8px;
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        .brand-support a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            padding: 0.65rem 1.4rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="brand-assets-page">
+    <div data-component-slot="header"></div>
+    <section class="works-hero brand-hero">
+        <div class="works-hero__background" aria-hidden="true"></div>
+        <div class="container works-hero__content" data-animate>
+            <span class="pill-label">Brand Assets</span>
+            <h1 class="works-hero__title">{{ page.hero_title | default: page.title }}</h1>
+            <p class="brand-hero__lead">{{ page.hero_description }}</p>
+            <div class="brand-hero__meta">
+                <div class="brand-hero__meta-item">
+                    <span class="brand-hero__meta-label">Formats</span>
+                    <span class="brand-hero__meta-value">SVG / PNG</span>
+                </div>
+                <div class="brand-hero__meta-item">
+                    <span class="brand-hero__meta-label">Usage</span>
+                    <span class="brand-hero__meta-value">メディア掲載 / イベント資料</span>
+                </div>
+                <div class="brand-hero__meta-item">
+                    <span class="brand-hero__meta-label">Contact</span>
+                    <span class="brand-hero__meta-value">contact@xe-non.com</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="brand-wrapper">
+            {% if page.intro_title or page.intro_body %}
+            <section class="brand-intro">
+                <h2>{{ page.intro_title | default: 'Usage Overview' }}</h2>
+                <p>{{ page.intro_body | default: 'xe-Nonのロゴやアイコンをメディア掲載・イベント資料などで利用するための公式データです。ダウンロード前に利用ガイドラインをご確認ください。' }}</p>
+            </section>
+            {% endif %}
+
+            {% if page.assets %}
+            <div class="brand-assets-grid">
+                {% for asset in page.assets %}
+                <article class="brand-card">
+                    {% if asset.tag %}
+                    <span class="brand-card__badge">{{ asset.tag }}</span>
+                    {% endif %}
+                    <h3 class="brand-card__title">{{ asset.name }}</h3>
+                    {% if asset.description %}
+                    <p class="brand-card__description">{{ asset.description }}</p>
+                    {% endif %}
+                    <div class="brand-preview brand-preview--{{ asset.theme | default: 'light' }}">
+                        <img src="{{ asset.preview }}" alt="{{ asset.alt | default: asset.name }}" loading="lazy" decoding="async">
+                    </div>
+                    {% if asset.downloads %}
+                    <div class="brand-downloads">
+                        {% for file in asset.downloads %}
+                        <a class="brand-downloads__link" href="{{ file.url }}" download>
+                            <span>{{ file.label }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <section class="brand-guidelines">
+                <h3>ご利用にあたって</h3>
+                <ul>
+                    {% assign rules = page.guidelines | default: site.brand_guidelines %}
+                    {% if rules %}
+                        {% for rule in rules %}
+                        <li>{{ rule }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>ロゴの色や縦横比は変更せず、余白を十分に確保してください。</li>
+                        <li>商用利用や大規模な印刷利用の際は事前にご連絡ください。</li>
+                        <li>xe-Nonを誤解させる用途や、暴力的・公序良俗に反する媒体では利用できません。</li>
+                    {% endif %}
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <div data-component-slot="footer"></div>
+</body>
+</html>
