@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MGXKWK4G');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZBVEE52X3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DZBVEE52X3');
+    </script>
+    <!-- End Google tag (gtag.js) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="xe-Nonチーム全体へのご意見・ご要望・苦情などを受け付ける公式お問い合わせフォームです。" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="stylesheet" href="/styles/fonts.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/hamburger.css">
+    <link rel="stylesheet" href="/styles/works.css"> 
+    <script src="/scripts/preloader.js" defer></script>
+    <script src="/scripts/components-loader.js" defer></script>
+    <title>Contact | xe-Non</title>
+    <style>
+        :root {
+            --contact-border-strong: rgba(15, 23, 42, 0.12);
+            --contact-surface: #f6f7fb;
+            --contact-panel: #ffffff;
+            --contact-heading: #0f172a;
+            --contact-muted: #5d6473;
+        }
+
+        ::selection {
+            background: rgba(43, 86, 177, 0.85);
+            color: #ffffff;
+        }
+
+        ::-moz-selection {
+            background: rgba(43, 86, 177, 0.85);
+            color: #ffffff;
+        }
+
+        body.contact-page {
+            background: var(--contact-surface);
+            color: #ffffff;
+        }
+
+        main {
+            display: block;
+            padding-bottom: clamp(4rem, 8vw, 6rem);
+        }
+
+        .contact-hero {
+            background: linear-gradient(135deg, #0f172a, #1d2d50);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-hero__lead{
+            color: #ffffff;
+        }
+
+        .contact-hero .works-hero__content {
+            padding-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        .contact-hero .pill-label {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .contact-hero__meta {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 1.25rem;
+        }
+
+        .contact-hero__meta-item {
+            min-width: 160px;
+        }
+
+        .contact-hero__meta-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-hero__meta-value {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .contact-wrapper {
+            margin-top: clamp(2rem, 5vw, 3rem);
+            max-width: 960px;
+            padding: 0 clamp(1rem, 5vw, 2.5rem);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            background: var(--contact-panel);
+            border: 1px solid var(--contact-border-strong);
+            border-radius: 4px;
+            padding: clamp(1.25rem, 3vw, 2rem);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+            margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+        }
+
+        .contact-info__title {
+            font-family: "LineSeed_Bd", sans-serif;
+            font-size: 1rem;
+            color: var(--contact-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .contact-info__item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .contact-info__item span {
+            display: block;
+        }
+
+        .contact-info__label {
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--contact-muted);
+        }
+
+        .contact-info__value {
+            margin-top: 0.35rem;
+            font-weight: 600;
+            color: var(--contact-heading);
+        }
+
+        .contact-panel {
+            background: var(--contact-panel);
+            border: 1px solid var(--contact-border-strong);
+            border-radius: 4px;
+            box-shadow: 0 12px 22px rgba(15, 23, 42, 0.05);
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .contact-panel__heading {
+            margin-bottom: 1.75rem;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            padding-bottom: 1rem;
+        }
+
+        .contact-panel__heading h2 {
+            font-family: "LineSeed_Bd", sans-serif;
+            font-size: 1.35rem;
+            color: var(--contact-heading);
+            margin: 0;
+        }
+
+        .contact-panel__heading p {
+            margin-top: 0.5rem;
+            color: var(--contact-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-notes {
+            background: var(--contact-panel);
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            border-radius: 2px;
+            padding: clamp(1.4rem, 3vw, 1.9rem);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--contact-muted);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .contact-notes h2 {
+            font-family: "LineSeed_Bd", sans-serif;
+            font-size: 1.05rem;
+            color: var(--contact-heading);
+            text-align: left;
+            margin-bottom: 1rem;
+            letter-spacing: 0.12em;
+        }
+
+        .contact-notes ul,
+        .contact-notes ol {
+            padding-left: 1.25rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .contact-notes li {
+            margin-bottom: 0.65rem;
+        }
+
+        #myForm {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-family: "LineSeed_Bd", sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            color: var(--contact-muted);
+            text-transform: uppercase;
+        }
+
+        label span.required {
+            font-size: 0.75em;
+            color: var(--color-accent);
+            margin-left: 4px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid rgba(15, 23, 42, 0.15);
+            background-color: #fdfdfd;
+            color: #101828;
+            border-radius: 2px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #111827;
+            box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.12);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 170px;
+            resize: vertical;
+        }
+
+        #submitButton {
+            width: 100%;
+            border-radius: 2px;
+            border: 1px solid #0f172a;
+            background: #0f172a;
+            color: #ffffff;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 0.9rem 1rem;
+        }
+
+        #submitButton:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--contact-muted);
+        }
+    </style>
+</head>
+<body class="works contact-page">
+    
+    <div data-component-slot="header"></div>
+    <section class="works-hero contact-hero">
+        <div class="works-hero__background" aria-hidden="true"></div>
+        <div class="container works-hero__content">
+            <span class="pill-label">General Contact</span>
+            <h1 class="works-hero__title">全般的なお問い合わせ</h1>
+            <p class="contact-hero__lead">xe-Nonの組織運営や公式サイトに関するご意見・ご要望・苦情などは、本フォームよりお知らせください。</p>
+            <div class="contact-hero__meta">
+                <div class="contact-hero__meta-item">
+                    <span class="contact-hero__meta-label">Response Window</span>
+                    <span class="contact-hero__meta-value">3〜5営業日以内</span>
+                </div>
+                <div class="contact-hero__meta-item">
+                    <span class="contact-hero__meta-label">Office Hours</span>
+                    <span class="contact-hero__meta-value">平日 10:00-18:00</span>
+                </div>
+                <div class="contact-hero__meta-item">
+                    <span class="contact-hero__meta-label">Priority Channel</span>
+                    <span class="contact-hero__meta-value">contact@xe-non.com</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="container contact-wrapper">
+            <section class="contact-panel">
+                <div class="contact-panel__heading">
+                    <h2>全般的なお問い合わせフォーム</h2>
+                    <p>xe-Nonの組織運営や公式サイトに関するご意見・ご要望・苦情などは、本フォームよりお知らせください。内容によっては回答までお時間をいただく場合があります。</p>
+                </div>
+
+                <div class="contact-notes">
+                    <h2>対応方針について</h2>
+                    <ul>
+                        <li>・お問い合わせの内容やタイミング（土日・祝日、活動停止期間など）により回答に時間を要する場合やお答えできない場合があります。</li>
+                        <li>・回答内容の一部または全部を転記・二次利用することはご遠慮ください。</li>
+                        <li>・ドメイン指定受信されている場合、「contact@xe-non.com」及び「noreply@xe-non.com」からのメールを受信できるよう設定してください。</li>
+                        <li>・個人情報は以下の目的のみに利用します。
+                            <ol>
+                                <li>1) お問い合わせへの回答・対応</li>
+                                <li>2) サービスに関する分析業務</li>
+                                <li>3) サービス改善および企画開発業務</li>
+                            </ol>
+                        </li>
+                        <li>・社会通念上相当な範囲を超える行為があった場合には、対応をお断り、または中断させていただくことがございます。</li>
+                        <li>・個人情報は当団体が必要と判断し聴取した場合にのみご記入をお願いします。</li>
+                        <li>・カスタマーハラスメントに該当する行為はご遠慮ください。</li>
+                    </ul>
+                </div>
+
+                <form 
+                    id="myForm" 
+                    action="https://script.google.com/macros/s/AKfycbx5fKQMqlwAB8JbhIvmdZUwSnfjhksJ2YG-uadL52vMuuRFIogoE8NV_5U0MolUunWL/exec">
+
+                    <div class="form-field">
+                        <label for="name">氏名 <span class="required">必須</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="furigana">ふりがな <span class="required">必須</span></label>
+                        <input type="text" id="furigana" name="furigana" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="company">会社名</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">メールアドレス <span class="required">必須</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="inquiryType">お問い合わせ種類 <span class="required">必須</span></label>
+                        <select id="inquiryType" name="inquiryType" required>
+                            <option value="">選択してください</option>
+                            <option value="公式サイトの苦情">公式サイトの苦情</option>
+                            <option value="ご意見・ご要望">ご意見・ご要望</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    <div id="inquiryTypeDetailWrapper" class="form-field" style="display: none;">
+                        <label for="inquiryTypeDetail">その他（詳細）<span class="required">必須</span></label>
+                        <input type="text" id="inquiryTypeDetail" name="inquiryTypeDetail">
+                    </div>
+                    <div class="form-field">
+                        <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" id="submitButton" class="button button--primary">
+                        送信する
+                    </button>
+                </form>
+
+                <div id="status"></div>
+            </section>
+        </div>
+    </main>
+
+    <div data-component-slot="footer"></div>
+    
+    <script>
+        const inquiryTypeSelect = document.getElementById("inquiryType");
+        const detailWrapper = document.getElementById("inquiryTypeDetailWrapper");
+        const detailInput = document.getElementById("inquiryTypeDetail");
+        
+        inquiryTypeSelect.addEventListener("change", function() {
+            if (this.value === "その他") {
+                detailWrapper.style.display = "block";
+                detailInput.required = true;
+            } else {
+                detailWrapper.style.display = "none";
+                detailInput.required = false;
+                detailInput.value = "";
+            }
+        });
+        
+
+        const form = document.getElementById("myForm");
+        const buttons = document.querySelectorAll("#submitButton"); 
+        const statusDiv = document.getElementById("status");
+        const GAS_URL = form.action; 
+
+        form.addEventListener("submit", async function(event) {
+            
+            event.preventDefault(); 
+            
+            buttons.forEach(btn => btn.disabled = true);
+            statusDiv.textContent = "送信中...";
+            statusDiv.style.color = "var(--color-accent)";
+
+            const formData = new FormData(form);
+            const searchParams = new URLSearchParams(formData);
+
+            try {
+                const response = await fetch(GAS_URL, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: searchParams.toString(), 
+                });
+
+                if (!response.ok) {
+                    throw new Error(`サーバーエラー: ${response.statusText}`);
+                }
+
+                const result = await response.json(); 
+                
+                if (result.status === "success") { 
+                    statusDiv.textContent = `${result.message}`;
+                    statusDiv.style.color = "var(--color-accent)";
+                    form.reset();
+                } else {
+                    statusDiv.textContent = `送信失敗: ${result.message || '不明なエラー'}`;
+                    statusDiv.style.color = "var(--color-accent)";
+                }
+
+            } catch (error) {
+                console.error('送信に失敗しました:', error);
+                
+                if (error.name === 'TypeError') {
+                     statusDiv.textContent = "送信に失敗しました (CORSエラーの可能性があります)";
+                } else {
+                     statusDiv.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
+                }
+                statusDiv.style.color = "var(--color-accent)"; 
+
+            } finally {
+                buttons.forEach(btn => btn.disabled = false);
+            }
+        });
+        
+    </script>
+</body>
+</html>
