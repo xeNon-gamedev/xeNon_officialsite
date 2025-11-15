@@ -430,7 +430,6 @@ li {
 
 /* Footer -------------------------------------------------- */
 .site-footer {
-	margin-top: clamp(4rem, 10vw, 6rem);
 	background: radial-gradient(120% 140% at 5% 0%, rgba(78, 202, 255, 0.18), transparent 62%),
 		linear-gradient(135deg, rgba(11, 17, 33, 0.98), rgba(21, 15, 45, 0.98));
 	color: var(--color-text-inverse);

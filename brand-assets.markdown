@@ -17,7 +17,7 @@ assets:
       - label: SVG
         url: /images/xe-non_horizontal.svg
       - label: PNG
-        url: /images/title.png
+        url: /images/xe-non_horizontal.png
   - name: xe-Non Horizontal Logo（ダーク背景）
     tag: Primary
     theme: dark
@@ -28,7 +28,7 @@ assets:
       - label: SVG
         url: /images/xe-non_horizontal_dark.svg
       - label: PNG
-        url: /images/title-white.svg
+        url: /images/xe-non_horizontal_dark.png
   - name: xe-Non Logo small（ライト背景）
     tag: Utility
     theme: light
@@ -65,15 +65,6 @@ assets:
     downloads:
       - label: SVG
         url: /images/xe-non_small_dark.svg
-  - name: App Icon
-    tag: Utility
-    theme: light
-    description: 正方形が必要なスペースやアプリアイコンとして利用できるシンプルなシンボルです。
-    preview: /images/favicon.png
-    alt: xe-Nonアイコン
-    downloads:
-      - label: PNG
-        url: /images/favicon.png
 guidelines:
   - ロゴの縦横比を変更したり、独自の装飾や枠線を加えないでください。
   - 文字や他のオブジェクトからロゴの高さの50%以上の余白を確保してください。
