@@ -17,7 +17,7 @@ info_cards:
   - theme: team
     badge: PROFILE
     title: 基本情報
-    summary: 北海道の高専生有志による、法人格を持たないインディープロジェクトです。
+    summary: 北海道の高専生有志による、インディーゲーム開発チームです。
     items:
       - "団体名：xe-Non（キセノン）"
       - "設立：2024年11月"
