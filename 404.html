@@ -23,7 +23,7 @@
         </script>
     </head>
     <body>
-        <div data-component-slot="header"></div>
+    {% include site-header.html %}
         <main>
             <div class="header-margin"></div>
             <div class="notfound">
@@ -32,7 +32,7 @@
                 <a href="/" class="to_toppage">トップページへ戻る</a>
             </div>
         </main>
-        <div data-component-slot="footer"></div>
+    {% include site-footer.html %}
     </body>
     
 </html>

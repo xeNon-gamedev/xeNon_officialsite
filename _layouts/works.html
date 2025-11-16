@@ -28,17 +28,17 @@
         <script src="/scripts/preloader.js" defer></script>
         <script src="/scripts/components-loader.js" defer></script>
         {% include meta-social.html
-            title='Works | xe-Non'
+            title='ワークス | xe-Non'
             description='xe-Nonが制作しているゲーム作品の一覧ページです。リリース済みのタイトルから開発中のプロジェクトをまとめて紹介します。'
         %}
-        <title>Works | xe-Non</title>
+        <title>ワークス | xe-Non</title>
     </head>
     <body class="works">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
-        <div data-component-slot="header"></div>
+    {% include site-header.html %}
     {% assign works = site.data.works | default: page.works %}
     {% assign works_size = works | size %}
     {% assign works_in_development = works | where: 'status', '開発中' %}
@@ -97,7 +97,7 @@
             </section>
             {% endif %}
         </main>
-        <div data-component-slot="footer"></div>
+    {% include site-footer.html %}
         <script src="/scripts/topPage_animation.js" defer></script>
     </body>
 </html>

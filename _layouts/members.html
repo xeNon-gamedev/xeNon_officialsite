@@ -28,17 +28,17 @@
         <script src="/scripts/preloader.js" defer></script>
         <script src="/scripts/components-loader.js" defer></script>
         {% include meta-social.html
-            title='Members | xe-Non'
+            title='メンバー | xe-Non'
             description='xe-Nonのメンバー紹介ページ。各メンバーの役割、スキルセット、担当領域を詳しくご紹介します。'
         %}
-        <title>Members | xe-Non</title>
+        <title>メンバー | xe-Non</title>
     </head>
     <body class="members">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
-        <div data-component-slot="header"></div>
+    {% include site-header.html %}
         <main>
             <section class="members-hero">
                 <div class="members-hero__background" aria-hidden="true"></div>
@@ -222,7 +222,7 @@
                 </div>
             </section>
         </main>
-        <div data-component-slot="footer"></div>
+    {% include site-footer.html %}
         <script src="/scripts/topPage_animation.js" defer></script>
     </body>
 </html>

@@ -6,6 +6,7 @@ const COMPONENT_MAP = {
 document.addEventListener('DOMContentLoaded', async () => {
 	const slots = Array.from(document.querySelectorAll('[data-component-slot]'));
 	if (!slots.length) {
+		initializeExistingComponents();
 		return;
 	}
 
@@ -37,7 +38,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 			console.error(error);
 		}
 	}));
+
+	initializeExistingComponents();
 });
+
+function initializeExistingComponents() {
+	const header = document.querySelector('[data-component="header"]');
+	if (header) {
+		setupNavigation(header);
+	}
+}
 
 function setupNavigation(header) {
 	if (!header) {

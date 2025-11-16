@@ -28,10 +28,10 @@
     <script src="/scripts/preloader.js" defer></script>
     <script src="/scripts/components-loader.js" defer></script>
     {% include meta-social.html
-        title='Contact | xe-Non'
+        title='お問い合わせ総合 | xe-Non'
         description='xe-Nonへのお問い合わせ窓口案内ページです。内容に応じて適切なフォームへ誘導します。'
     %}
-    <title>Contact | xe-Non</title>
+    <title>お問い合わせ総合 | xe-Non</title>
     <style>
         :root {
             --contact-border-strong: rgba(15, 23, 42, 0.12);
@@ -295,7 +295,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div data-component-slot="header"></div>
+    {% include site-header.html %}
     <section class="works-hero contact-hero">
         <div class="works-hero__background" aria-hidden="true"></div>
         <div class="container works-hero__content">
@@ -369,6 +369,6 @@
         </div>
     </main>
 
-    <div data-component-slot="footer"></div>
+    {% include site-footer.html %}
 </body>
 </html>

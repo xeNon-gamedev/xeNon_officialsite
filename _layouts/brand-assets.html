@@ -252,7 +252,7 @@
     </style>
 </head>
 <body class="brand-assets-page">
-    <div data-component-slot="header"></div>
+    {% include site-header.html %}
     <section class="works-hero brand-hero">
         <div class="works-hero__background" aria-hidden="true"></div>
         <div class="container works-hero__content" data-animate>
@@ -331,6 +331,6 @@
         </div>
     </main>
 
-    <div data-component-slot="footer"></div>
+    {% include site-footer.html %}
 </body>
 </html>

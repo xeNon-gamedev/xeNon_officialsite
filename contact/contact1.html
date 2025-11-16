@@ -5,10 +5,10 @@ layout: null
 <html lang="ja">
 <head>
     {% include meta-social.html
-        title='Contact | xe-Non'
+        title='お問い合わせ(全般) | xe-Non'
         description='xe-Nonチーム全体へのご意見・ご要望・苦情などを受け付ける公式お問い合わせフォームです。'
     %}
-    <title>Contact | xe-Non</title>
+    <title>お問い合わせ(全般) | xe-Non</title>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -306,7 +306,7 @@ layout: null
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div data-component-slot="header"></div>
+    {% include site-header.html %}
     <section class="works-hero contact-hero">
         <div class="works-hero__background" aria-hidden="true"></div>
         <div class="container works-hero__content">
@@ -410,7 +410,7 @@ layout: null
         </div>
     </main>
 
-    <div data-component-slot="footer"></div>
+    {% include site-footer.html %}
     
     <script>
         document.getElementById('timestamp').value = Date.now();
