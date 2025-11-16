@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MGXKWK4G');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZBVEE52X3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DZBVEE52X3');
+    </script>
+    <!-- End Google tag (gtag.js) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/styles/fonts.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/hamburger.css">
+    <link rel="stylesheet" href="/styles/works.css">
+    <script src="/scripts/preloader.js" defer></script>
+    <script src="/scripts/components-loader.js" defer></script>
+    {% include meta-social.html
+        title=page.title
+        description=page.description
+    %}
+    <title>{{ page.title }} | xe-Non</title>
+    {% include contact-styles.html %}
+    <style>
+        .organization-wrapper {
+            margin-top: clamp(2rem, 5vw, 3rem);
+        }
+
+        .organization-intro__meta {
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .organization-extra {
+            margin-top: clamp(2rem, 5vw, 3rem);
+        }
+    </style>
+</head>
+<body class="works organization-page contact-page">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% include site-header.html %}
+    <section class="works-hero contact-hero">
+        <div class="works-hero__background" aria-hidden="true"></div>
+        <div class="container works-hero__content">
+            {% if page.hero_label %}
+            <span class="pill-label">{{ page.hero_label }}</span>
+            {% endif %}
+            <h1 class="works-hero__title">{{ page.hero_title | default: page.title }}</h1>
+            {% if page.hero_lead %}
+            <p class="contact-hero__lead">{{ page.hero_lead }}</p>
+            {% endif %}
+            <div class="contact-hero__meta">
+                {% if page.founded %}
+                <div class="contact-hero__meta-item">
+                    <span class="contact-hero__meta-label">Founded</span>
+                    <span class="contact-hero__meta-value">{{ page.founded }}</span>
+                </div>
+                {% endif %}
+                {% if page.base_area %}
+                <div class="contact-hero__meta-item">
+                    <span class="contact-hero__meta-label">Base</span>
+                    <span class="contact-hero__meta-value">{{ page.base_area }}</span>
+                </div>
+                {% endif %}
+                {% if page.focus %}
+                <div class="contact-hero__meta-item">
+                    <span class="contact-hero__meta-label">Focus</span>
+                    <span class="contact-hero__meta-value">{{ page.focus }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <main class="contact-surface">
+        <div class="container contact-wrapper organization-wrapper">
+            <section class="contact-intro">
+                {% if page.intro_eyebrow %}
+                <p class="contact-intro__eyebrow">{{ page.intro_eyebrow }}</p>
+                {% endif %}
+                <h2 class="contact-intro__title">{{ page.intro_title | default: page.title }}</h2>
+                {% if page.intro_text %}
+                <p class="contact-intro__text">{{ page.intro_text }}</p>
+                {% endif %}
+            </section>
+
+            {% if page.info_cards %}
+            <div class="contact-directory organization-directory">
+                {% for card in page.info_cards %}
+                {% assign theme_class = card.theme | default: 'team' %}
+                <article class="contact-option contact-option--{{ theme_class }}">
+                    {% if card.badge %}
+                    <span class="contact-option__badge">{{ card.badge }}</span>
+                    {% endif %}
+                    <h3 class="contact-option__title">{{ card.title }}</h3>
+                    {% if card.summary %}
+                    <p class="contact-option__summary">{{ card.summary }}</p>
+                    {% endif %}
+                    {% if card.items %}
+                    <ul class="contact-option__list">
+                        {% for item in card.items %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% if card.cta_label %}
+                    <a class="contact-option__cta" href="{{ card.cta_url | default: '#' }}">
+                        {{ card.cta_label }}
+                        {% if card.cta_icon %}<span>{{ card.cta_icon }}</span>{% endif %}
+                    </a>
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.guidelines %}
+            <div class="contact-guidelines">
+                <h3>{{ page.guidelines_title | default: 'ご案内' }}</h3>
+                <ul>
+                    {% for item in page.guidelines %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if page.faqs %}
+            <section class="organization-faq organization-extra">
+                <h3 class="contact-intro__title">よくあるご質問</h3>
+                {% for faq in page.faqs %}
+                <details>
+                    <summary>{{ faq.question }}</summary>
+                    <p>{{ faq.answer }}</p>
+                </details>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if content %}
+            <section class="organization-extra">
+                {{ content }}
+            </section>
+            {% endif %}
+        </div>
+    </main>
+    {% include site-footer.html %}
+</body>
+</html>

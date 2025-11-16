@@ -134,6 +134,7 @@ main {
 	padding: 0 clamp(0.75rem, 2vw, 1.5rem);
 	max-width: var(--max-width-content);
 }
+
 img, picture {
 	max-width: 100%;
 	display: block;
