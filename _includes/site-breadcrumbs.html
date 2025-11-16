@@ -1,0 +1,102 @@
+{% assign breadcrumb_disabled = page.hide_breadcrumb | default: false %}
+{% assign breadcrumb_title = page.breadcrumb_title | default: page.title | default: page.name | default: site.title | default: 'ページ名' %}
+{% assign breadcrumb_append_current = page.breadcrumb_append_current %}
+{% if breadcrumb_append_current == nil %}
+  {% assign breadcrumb_append_current = true %}
+{% endif %}
+{% if breadcrumb_disabled != true %}
+  {% assign has_custom_crumbs = page.breadcrumbs and page.breadcrumbs.size > 0 %}
+  {% assign can_show_default = page.url and page.url != '/' %}
+  {% if has_custom_crumbs or can_show_default %}
+  <nav class="site-breadcrumbs" aria-label="パンくずリスト">
+    <ol class="site-breadcrumbs__list">
+      <li class="site-breadcrumbs__item"><a href="{{ '/' | relative_url }}">ホーム</a></li>
+      {% if has_custom_crumbs %}
+        {% for crumb in page.breadcrumbs %}
+          {% assign crumb_title = crumb.title | default: crumb.name | default: breadcrumb_title %}
+          {% assign crumb_url = crumb.url %}
+          {% assign is_last = forloop.last %}
+          {% if crumb_url and crumb_url != '' and is_last == false %}
+            <li class="site-breadcrumbs__item"><a href="{{ crumb_url | relative_url }}">{{ crumb_title }}</a></li>
+          {% elsif crumb_url and crumb_url != '' and is_last %}
+            <li class="site-breadcrumbs__item" aria-current="page">{{ crumb_title }}</li>
+          {% else %}
+            <li class="site-breadcrumbs__item" aria-current="page">{{ crumb_title }}</li>
+          {% endif %}
+        {% endfor %}
+        {% if breadcrumb_append_current %}
+          <li class="site-breadcrumbs__item" aria-current="page">{{ breadcrumb_title }}</li>
+        {% endif %}
+      {% elsif can_show_default %}
+        <li class="site-breadcrumbs__item" aria-current="page">{{ breadcrumb_title }}</li>
+      {% endif %}
+    </ol>
+  </nav>
+
+  {% assign breadcrumb_items_json = '' %}
+  {% assign position = 1 %}
+  {% capture breadcrumb_item %}
+{
+  "@type": "ListItem",
+  "position": {{ position }},
+  "name": "ホーム",
+  "item": "{{ '/' | absolute_url }}"
+}
+  {% endcapture %}
+  {% assign breadcrumb_items_json = breadcrumb_item %}
+  {% assign position = position | plus: 1 %}
+
+  {% if has_custom_crumbs %}
+    {% for crumb in page.breadcrumbs %}
+      {% assign crumb_title = crumb.title | default: crumb.name | default: breadcrumb_title %}
+      {% assign crumb_url = crumb.url %}
+      {% assign crumb_item_url = nil %}
+      {% if crumb_url and crumb_url != '' %}
+        {% assign crumb_item_url = crumb_url | absolute_url %}
+      {% endif %}
+      {% capture breadcrumb_item %}
+,{
+  "@type": "ListItem",
+  "position": {{ position }},
+  "name": "{{ crumb_title | strip | escape }}"{% if crumb_item_url %},
+  "item": "{{ crumb_item_url }}"{% endif %}
+}
+      {% endcapture %}
+      {% assign breadcrumb_items_json = breadcrumb_items_json | append: breadcrumb_item %}
+      {% assign position = position | plus: 1 %}
+    {% endfor %}
+    {% if breadcrumb_append_current %}
+      {% assign current_url = page.url | absolute_url %}
+      {% capture breadcrumb_item %}
+,{
+  "@type": "ListItem",
+  "position": {{ position }},
+  "name": "{{ breadcrumb_title | strip | escape }}",
+  "item": "{{ current_url }}"
+}
+      {% endcapture %}
+      {% assign breadcrumb_items_json = breadcrumb_items_json | append: breadcrumb_item %}
+    {% endif %}
+  {% elsif can_show_default %}
+    {% assign current_url = page.url | absolute_url %}
+    {% capture breadcrumb_item %}
+,{
+  "@type": "ListItem",
+  "position": {{ position }},
+  "name": "{{ breadcrumb_title | strip | escape }}",
+  "item": "{{ current_url }}"
+}
+    {% endcapture %}
+    {% assign breadcrumb_items_json = breadcrumb_items_json | append: breadcrumb_item %}
+  {% endif %}
+
+  {% capture breadcrumb_json %}
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{{ breadcrumb_items_json | strip }}]
+}
+  {% endcapture %}
+  <script type="application/ld+json">{{ breadcrumb_json | strip }}</script>
+  {% endif %}
+{% endif %}

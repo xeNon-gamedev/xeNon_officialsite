@@ -37,6 +37,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate-v2
+  - jekyll-sitemap
 
 # ページネーションの設定（jekyll-paginate-v2）
 pagination:
@@ -45,6 +46,21 @@ pagination:
   title: ':title'
   sort_field: 'date'
   sort_reverse: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      breadcrumbs:
+        - title: ニュース一覧
+          url: /news/
+  - scope:
+      path: "contact"
+    values:
+      breadcrumbs:
+        - title: お問い合わせ総合
+          url: /contact/
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

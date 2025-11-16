@@ -1,3 +1,4 @@
 ---
 layout: works
+title: ワークス
 ---

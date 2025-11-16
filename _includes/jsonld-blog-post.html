@@ -1,0 +1,44 @@
+{% assign canonical_url = page.url | absolute_url %}
+{% assign jsonld_title = page.og_title | default: page.title | default: site.title %}
+{% assign jsonld_description = page.og_description | default: page.description | default: page.excerpt | default: site.description %}
+{% assign jsonld_description = jsonld_description | strip_html | strip_newlines | truncate: 200, '' %}
+{% assign jsonld_image = page.og_image | default: site.og_image %}
+{% if jsonld_image %}
+  {% assign jsonld_image = jsonld_image | absolute_url %}
+{% endif %}
+{% assign jsonld_author = page.author | default: site.author | default: site.site_name | default: site.title %}
+{% assign jsonld_publisher = site.site_name | default: site.title %}
+{% assign jsonld_logo = site.logo | default: site.og_image %}
+{% if jsonld_logo %}
+  {% assign jsonld_logo = jsonld_logo | absolute_url %}
+{% endif %}
+{% assign jsonld_date_published = page.date | date_to_xmlschema %}
+{% assign jsonld_modified_source = page.last_modified_at | default: page.updated | default: page.date %}
+{% assign jsonld_date_modified = jsonld_modified_source | date_to_xmlschema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ jsonld_title | strip | escape }}",
+  "description": "{{ jsonld_description | strip | escape }}",
+  "datePublished": "{{ jsonld_date_published }}",
+  "dateModified": "{{ jsonld_date_modified }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ jsonld_author | strip | escape }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ jsonld_publisher | strip | escape }}"{% if jsonld_logo %},
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ jsonld_logo }}"
+    }{% endif %}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ canonical_url }}"
+  }{% if jsonld_image %},
+  "image": "{{ jsonld_image }}"{% endif %}
+}
+</script>

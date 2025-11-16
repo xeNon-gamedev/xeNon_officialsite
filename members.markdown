@@ -1,3 +1,4 @@
 ---
 layout: members
+title: メンバー
 ---
