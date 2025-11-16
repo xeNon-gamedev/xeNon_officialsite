@@ -2,10 +2,10 @@
 <footer class="site-footer" data-component="footer">
 	<div class="site-footer__inner">
 		<div class="site-footer__brand">
-			<a class="site-footer__logo" href="/">
+			<a class="site-footer__logo" href="{{ '/' | relative_url }}">
 				<picture>
-					<source srcset="/images/xe-non_horizontal_dark.svg" media="(prefers-color-scheme: dark)">
-					<img src="/images/xe-non_horizontal.svg" alt="xe-Non" width="168" height="52" loading="lazy" decoding="async">
+					<source srcset="{{ '/images/xe-non_horizontal_dark.svg' | relative_url }}" media="(prefers-color-scheme: dark)">
+					<img src="{{ '/images/xe-non_horizontal.svg' | relative_url }}" alt="xe-Non" width="168" height="52" loading="lazy" decoding="async">
 				</picture>
 			</a>
 			<p class="site-footer__tagline">インディーゲームで、次の化学反応を。</p>
@@ -13,20 +13,20 @@
 		<div class="site-footer__navigation" aria-label="フッターナビゲーション">
 			<h2 class="site-footer__title">サイトリンク</h2>
 			<ul class="site-footer__links">
-				<li><a href="/news">ニュース</a></li>
-				<li><a href="/members">メンバー</a></li>
-				<li><a href="/works">ワークス</a></li>
-				<li><a href="/xenoninfo">団体概要</a></li>
-				<li><a href="/contact" target="_blank" rel="noopener">お問い合わせ</a></li>
-				<li><a href="/aboutsite">このサイトについて</a></li>
+				<li><a href="{{ '/news/' | relative_url }}">ニュース</a></li>
+				<li><a href="{{ '/members/' | relative_url }}">メンバー</a></li>
+				<li><a href="{{ '/works/' | relative_url }}">ワークス</a></li>
+				<li><a href="{{ '/xenoninfo/' | relative_url }}">団体概要</a></li>
+				<li><a href="{{ '/contact/' | relative_url }}" target="_blank" rel="noopener">お問い合わせ</a></li>
+				<li><a href="{{ '/aboutsite/' | relative_url }}">このサイトについて</a></li>
 			</ul>
 		</div>
 		<div class="site-footer__social" aria-label="ソーシャルリンク">
 			<h2 class="site-footer__title">Follow xe-Non</h2>
 			<ul class="site-footer__social-list">
-				<li><a href="https://github.com/xeNon-gamedev" aria-label="GitHub"><img src="/images/Link_logo/github.avif" onerror="this.src='/images/Link_logo/github.webp'" alt="GitHub"></a></li>
-				<li><a href="https://x.com/xenon_nit" aria-label="X (Twitter)"><img src="/images/Link_logo/twitter_x.avif" onerror="this.src='/images/Link_logo/twitter_x.webp'" alt="X"></a></li>
-				<li><a href="https://youtube.com/@xenon_vgdev" aria-label="YouTube"><img src="/images/Link_logo/youtube.avif" onerror="this.src='/images/Link_logo/youtube.webp'" alt="YouTube"></a></li>
+				<li><a href="https://github.com/xeNon-gamedev" aria-label="GitHub"><img src="{{ '/images/Link_logo/github.avif' | relative_url }}" alt="GitHub"></a></li>
+				<li><a href="https://x.com/xenon_nit" aria-label="X (Twitter)"><img src="{{ '/images/Link_logo/twitter_x.avif' | relative_url }}" alt="X"></a></li>
+				<li><a href="https://youtube.com/@xenon_vgdev" aria-label="YouTube"><img src="{{ '/images/Link_logo/youtube.avif' | relative_url }}" alt="YouTube"></a></li>
 			</ul>
 		</div>
 	</div>
