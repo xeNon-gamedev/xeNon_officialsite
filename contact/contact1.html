@@ -10,14 +10,11 @@ title: お問い合わせ(全般)
         description='xe-Nonチーム全体へのご意見・ご要望・苦情などを受け付ける公式お問い合わせフォームです。'
     %}
     <title>お問い合わせ(全般) | xe-Non</title>
-    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MGXKWK4G');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZBVEE52X3"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -26,7 +23,8 @@ title: お問い合わせ(全般)
 
     gtag('config', 'G-DZBVEE52X3');
     </script>
-    <!-- End Google tag (gtag.js) -->
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
@@ -303,11 +301,10 @@ title: お問い合わせ(全般)
     </style>
 </head>
 <body class="works contact-page">
-    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGXKWK4G"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     {% include site-header.html %}
+
     <section class="works-hero contact-hero">
         <div class="works-hero__background" aria-hidden="true"></div>
         <div class="container works-hero__content">
@@ -443,46 +440,55 @@ title: お問い合わせ(全般)
             statusDiv.textContent = "送信中...";
             statusDiv.style.color = "var(--color-accent)";
 
-            const formData = new FormData(form);
-            const searchParams = new URLSearchParams(formData);
+            // ★ YOUR_SITE_KEY をご自身の「サイトキー」に置き換えてください
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le-8Q8sAAAAADzJ_nlrjnMgkLlLl0k-m-fcQCOO', {action: 'submit'}).then(async function(token) {
+                    
+                    const formData = new FormData(form);
+                    formData.append('g-recaptcha-response', token); 
 
-            try {
-                const response = await fetch(GAS_URL, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: searchParams.toString(), 
-                });
+                    const searchParams = new URLSearchParams(formData);
 
-                if (!response.ok) {
-                    throw new Error(`サーバーエラー: ${response.statusText}`);
-                }
+                    try {
+                        const response = await fetch(GAS_URL, {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: searchParams.toString(), 
+                        });
 
-                const result = await response.json(); 
-                
-                if (result.status === "success") { 
-                    statusDiv.textContent = `${result.message}`;
-                    statusDiv.style.color = "var(--color-accent)";
-                    form.reset();
-                } else {
-                    statusDiv.textContent = `送信失敗: ${result.message || '不明なエラー'}`;
-                    statusDiv.style.color = "var(--color-accent)";
-                }
+                        if (!response.ok) {
+                            throw new Error(`サーバーエラー: ${response.statusText}`);
+                        }
 
-            } catch (error) {
-                console.error('送信に失敗しました:', error);
-                
-                if (error.name === 'TypeError') {
-                     statusDiv.textContent = "送信に失敗しました (CORSエラーの可能性があります)";
-                } else {
-                     statusDiv.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
-                }
-                statusDiv.style.color = "var(--color-accent)"; 
+                        const result = await response.json(); 
+                        
+                        if (result.status === "success") { 
+                            statusDiv.textContent = `${result.message}`;
+                            statusDiv.style.color = "var(--color-accent)";
+                            form.reset();
+                        } else {
+                            statusDiv.textContent = `送信失敗: ${result.message || '不明なエラー'}`;
+                            statusDiv.style.color = "var(--color-accent)";
+                        }
 
-            } finally {
-                buttons.forEach(btn => btn.disabled = false);
-            }
+                    } catch (error) {
+                        console.error('送信に失敗しました:', error);
+                        
+                        if (error.name === 'TypeError') {
+                                statusDiv.textContent = "送信に失敗しました (CORSエラーの可能性があります)";
+                        } else {
+                                statusDiv.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
+                        }
+                        statusDiv.style.color = "var(--color-accent)"; 
+
+                    } finally {
+                        buttons.forEach(btn => btn.disabled = false);
+                        document.getElementById('timestamp').value = Date.now();
+                    }
+                }); 
+            }); 
         });
         
     </script>
