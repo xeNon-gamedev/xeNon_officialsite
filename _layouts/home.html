@@ -167,19 +167,50 @@
                             <h2 class="section-heading__title">Works in Progress</h2>
                         </div>
                     </div>
-                    <article class="project-card" data-animate data-animate-delay="1">
-                        <span class="project-card__badge pill-label">In Development</span>
-                        <h3 class="project-card__title">Cooking is Chemistry (開発中...)</h3>
-                        <p class="project-card__description">あなたはとある国のシェフ。使う予定の調理場は、国の科学者によって危ないものがたくさん仕掛けられてます。あなたは粛清されずに料理を終え、無事に生き帰れるのか...</p>
-                        <p class="project-card__note">※近日中に公開予定。開発中のため、内容は変更となる可能性があります。</p>
-                        <p class="project-card__note">とある場所で先行公開予定です。</p>
-                    </article>
-                    <article class="project-card" data-animate data-animate-delay="1">
-                        <span class="project-card__badge pill-label">In Development</span>
-                        <h3 class="project-card__title">??? (開発中...)</h3>
-                        <p class="project-card__description">街にあふれるガジェットを駆使し、異世界からの脱出を目指すアクションアドベンチャー。妖怪とのバトルや環境ギミックが絡み合う、スリリングなゲームプレイを構築中です。</p>
-                        <p class="project-card__note">※開発中のため、内容は変更となる可能性があります。</p>
-                    </article>
+                    {% assign home_works = site.data.works | default: empty %}
+                    {% assign home_wip = home_works | where: 'status', '開発中' %}
+                    {% if home_wip and home_wip.size > 0 %}
+                        {% for work in home_wip limit: 2 %}
+                        <article class="project-card" data-animate data-animate-delay="{{ forloop.index }}">
+                            <span class="project-card__badge pill-label">{{ work.status | default: 'Concept Phase' }}</span>
+                            <h3 class="project-card__title">{{ work.title }}{% if work.phase %}（{{ work.phase }}）{% elsif work.status == '開発中' %}（企画中）{% endif %}</h3>
+                            <p class="project-card__description">{{ work.home_summary | default: work.summary }}</p>
+                            {% if work.home_note or work.highlight %}
+                            <p class="project-card__note project-card__note--muted">{{ work.home_note | default: work.highlight }}</p>
+                            {% endif %}
+                        </article>
+                        {% endfor %}
+                    {% else %}
+                        <article class="project-card" data-animate data-animate-delay="1">
+                            <span class="project-card__badge pill-label">Concept Phase</span>
+                            <h3 class="project-card__title">企画準備中</h3>
+                            <p class="project-card__description">現在公開可能な開発中タイトルはありません。企画が固まり次第、Works ページでお知らせします。</p>
+                            <p class="project-card__note project-card__note--muted">最新の制作状況は <a href="{{ '/works/' | relative_url }}">Works</a> をご覧ください。</p>
+                        </article>
+                    {% endif %}
+                    <div class="wip-teaser" data-animate data-animate-delay="2">
+                        <div class="wip-teaser__content">
+                            <span class="pill-label">Behind the Scenes</span>
+                            <h3 class="wip-teaser__title">開発チームのいま</h3>
+                            <p class="wip-teaser__text">日々のプロトタイプ検証やアートディレクションの進捗を、クラフトログとしてまとめています。メンバーは同じ教室から集まり、授業の合間や深夜のオンラインでプロジェクトを磨き込んでいます。その他、すでに配信中のゲームや開発中のタイトルは <a href="{{ '/works/' | relative_url }}">Works</a> よりご覧いただけます。</p>
+                            <div class="wip-teaser__actions">
+                                <a class="button button--primary" href="/xenoninfo/">団体概要を見る</a>
+                                <a class="button button--ghost" href="{{ '/works/' | relative_url }}">ワークスを見る</a>
+                            </div>
+                        </div>
+                        <div class="wip-teaser__highlights">
+                            <div class="wip-teaser__stat">
+                                <span class="wip-teaser__stat-label">Current Focus</span>
+                                <p class="wip-teaser__stat-value">Unity</p>
+                                <p class="wip-teaser__stat-note">企画立案中...</p>
+                            </div>
+                            <ul class="wip-teaser__list">
+                                <li>週次ミーティングで企画ボードを更新</li>
+                                <li>Godot / Unity それぞれでプロトタイプの実現性を比較</li>
+                                <li>公開可能な案が固まり次第、Worksページで順次お知らせ</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

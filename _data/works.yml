@@ -9,3 +9,15 @@
     - パズル
   cover: "/images/works/bfo.png"
   link: "https://github.com/kinoko0518/Boxfish-Overflow-"
+
+- id: new-ip-01
+  title: "New IP #01"
+  status: "開発中"
+  summary: "来年度のゲームクリエイター甲子園で公開を目指し、Unityでの実装を前提に物語とメカニクスを設計中です。"
+  home_summary: "来年度のゲームクリエイター甲子園にて公開するための企画を立案中です。"
+  highlight: "アイデア定義とプレゼン資料の磨き込みを進行"
+  home_note: "※ Cooking is Chemistry を含む既存プロジェクトは開発を終了し、新規タイトルの企画に集中しています。"
+  engines:
+    - Unity
+  tags:
+    - 企画中
